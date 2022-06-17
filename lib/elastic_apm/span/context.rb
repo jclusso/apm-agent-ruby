@@ -69,8 +69,5 @@ require 'elastic_apm/span/context/db'
 require 'elastic_apm/span/context/http'
 require 'elastic_apm/span/context/destination'
 require 'elastic_apm/span/context/message'
-<<<<<<< Updated upstream
-=======
-require 'elastic_apm/span/context/service'
 require 'elastic_apm/span/context/links'
->>>>>>> Stashed changes
+
