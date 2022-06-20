@@ -69,6 +69,10 @@ module ElasticAPM
               base[:message] = build_message(context.message)
             end
 
+            if context.links && !context.links.empty?
+              base[:links] = build_links(context.links)
+            end
+
             base
           end
 
@@ -119,6 +123,14 @@ module ElasticAPM
               age: {
                 ms: message.age_ms.to_i
               }
+            }
+          end
+
+          def build_links(links)
+            {
+              links: links.map do |link|
+                {"trace_id" => link.trace_id, "span_id" => link.span_id}
+              end
             }
           end
         end

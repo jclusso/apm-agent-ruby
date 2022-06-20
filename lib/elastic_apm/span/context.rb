@@ -28,7 +28,7 @@ module ElasticAPM
         labels: {},
         sync: nil,
         message: nil,
-        links: nil,
+        links: nil
       )
         @sync = sync
         @db = db && Db.new(**db)
@@ -45,10 +45,10 @@ module ElasticAPM
           end
         @labels = labels
         @links =
-        case links
-        when Links then links
-        when Array then Links.new(links)
-        end
+          case links
+          when Links then links
+          when Array then Links.new(links)
+          end
       end
 
       attr_reader(
