@@ -202,12 +202,9 @@ module ElasticAPM
         # we need to check if the span should be sampled
         # and update the transaction's sample rate accordingly
         if transaction.started_spans == 0 && span_sample_rate && span_sample_rate != transaction.sample_rate
-        # if span_sample_rate && span_sample_rate != transaction.sample_rate
           span_sampled = random_sample?(span_sample_rate)
-          if transaction.sampled? != span_sampled
-            transaction.sampled = span_sampled
-            transaction.sample_rate = span_sample_rate
-          end
+          transaction.sampled = span_sampled
+          transaction.sample_rate = span_sampled ? span_sample_rate : 0
         end
       end
 
